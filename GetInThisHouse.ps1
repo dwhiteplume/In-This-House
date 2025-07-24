@@ -1,3 +1,5 @@
+#!/usr/bin/env -S pwsh -File
+
 <#
 .SYNOPSIS
 Generates a stylized meme using ASCII art to frame a custom message in a "house rules" format.
