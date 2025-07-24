@@ -1,0 +1,84 @@
+
+NAME
+    /home/darius/bin/inThisHouse/GetInThisHouse.ps1
+    
+SYNOPSIS
+    Generates a stylized meme using ASCII art to frame a custom message in a "house rules" format.
+    
+    
+SYNTAX
+    /home/darius/bin/inThisHouse/GetInThisHouse.ps1 [[-message] <String>] [[-maxLength] <Int32>] [<CommonParameters>]
+    
+    
+DESCRIPTION
+    This script creates a playful meme with a top and bottom ASCII art frame that surrounds a user-defined message.
+    It checks the total character length to ensure the output remains within a specified limit (default is 300 characters).
+    If the meme exceeds this limit, an error is thrown to help the user adjust the input accordingly.
+    
+
+PARAMETERS
+    -message <String>
+        Specifies the message to display between the ASCII frames. The default message is "MESSAGE".
+        
+        Required?                    false
+        Position?                    1
+        Default value                MESSAGE
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -maxLength <Int32>
+        Sets the maximum character count for the final meme output, including frames and message.
+        If the total length exceeds this value, the script throws an error with the actual length.
+        
+        Required?                    false
+        Position?                    2
+        Default value                300
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). 
+    
+INPUTS
+    
+OUTPUTS
+    
+    -------------------------- EXAMPLE 1 --------------------------
+    
+    PS > .\GetInThisHouse.ps1 -message "Respect Brittney Sykes' perimeter defense"
+    Creates a framed ASCII meme with the specified message, subject to default max length of 300 characters.
+    
+    
+    
+    
+    
+    
+    -------------------------- EXAMPLE 2 --------------------------
+    
+    PS > .\GetInThisHouse.ps1 -message "Stef Dolson’s screens are law" -maxLength 500
+    Creates a meme with increased character limit, useful for longer affirmations.
+    
+    
+    
+    
+    
+    
+    -------------------------- EXAMPLE 3 --------------------------
+    
+    PS > .\GetInThisHouse.ps1
+    Runs the script using the default message "MESSAGE" with a max length of 300 characters.
+    
+    
+    
+    
+    
+    
+    
+RELATED LINKS
+
+
