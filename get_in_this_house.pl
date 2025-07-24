@@ -28,17 +28,22 @@ my $bottom = <<'BOTTOM';
 ▔▏┗┻┛┃┃┗┻┛▕▔
 BOTTOM
 
-# Assemble the meme
+# remove the trailing newline from each frame
+chomp $top;
+chomp $bottom;
+
+# Assemble the meme (one newline between each piece)
 my $meme = join "\n", $top, $message, $bottom;
 
-# Measure total character count (including newlines)
+# Measure total character count (including the two newlines)
 my $length = length($meme);
 
 # Output or error based on length check
 if ($length <= $max_length) {
     print "$meme\n";
     exit 0;
-} else {
+}
+else {
     warn "Error: $length -gt $max_length\n";
     exit 1;
 }
