@@ -27,6 +27,9 @@ Creates a meme with increased character limit, useful for longer affirmations.
 .EXAMPLE
 .\GetInThisHouse.ps1
 Runs the script using the default message "MESSAGE" with a max length of 300 characters.
+
+.LINK
+https://github.com/dwhiteplume/In-This-House
 #>
 
 
