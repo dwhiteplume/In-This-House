@@ -3,17 +3,19 @@ use strict;
 use warnings;
 use Getopt::Long;
 
-# Default parameters
-my $message    = 'MESSAGE';
-my $max_length = 300;
+# Default values
+my $message   = 'Your message';
+my $doormat   = '';
+my $maxLength = 300;
 
 # Parse command-line options
 GetOptions(
-    'message|m=s'    => \$message,
-    'max-length|l=i' => \$max_length,
-) or die "Usage: $0 --message <text> --max-length <number>\n";
+    'message=s'   => \$message,
+    'doormat=s'   => \$doormat,
+    'maxLength=i' => \$maxLength,
+) or die "Error in command line arguments\n";
 
-# ASCII art frames
+# ASCII frames
 my $top = <<'TOP';
 ┏┓
 ┃┃╱╲in
@@ -28,22 +30,25 @@ my $bottom = <<'BOTTOM';
 ▔▏┗┻┛┃┃┗┻┛▕▔
 BOTTOM
 
-# remove the trailing newline from each frame
-chomp $top;
-chomp $bottom;
+# Handle doormat centering
+if ($doormat ne '') {
+    my $houseWidth = 13;
+    my $doormatWidth = length($doormat);
+    my $halfMat = int($doormatWidth / 2);
 
-# Assemble the meme (one newline between each piece)
-my $meme = join "\n", $top, $message, $bottom;
-
-# Measure total character count (including the two newlines)
-my $length = length($meme);
-
-# Output or error based on length check
-if ($length <= $max_length) {
-    print "$meme\n";
-    exit 0;
+    if ($doormatWidth < $houseWidth) {
+        my $padding = int($houseWidth / 2) - $halfMat;
+        $doormat = (' ' x $padding) . $doormat;
+    }
 }
-else {
-    warn "Error: $length -gt $max_length\n";
-    exit 1;
+
+# Construct meme
+my $meme = "$top\n$message\n$bottom";
+$meme .= "\n$doormat" if $doormat ne '';
+
+# Validate length
+if (length($meme) <= $maxLength) {
+    print "$meme\n";
+} else {
+    die length($meme) . " -gt $maxLength\n";
 }
