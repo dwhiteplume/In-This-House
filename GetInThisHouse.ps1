@@ -32,9 +32,11 @@ Runs the script using the default message "MESSAGE" with a max length of 300 cha
 https://github.com/dwhiteplume/In-This-House
 #>
 
-
+[CmdletBinding()]
 param(
- [string]$message = 'MESSAGE',
+ [string]$Message = 'Your message',
+ [Parameter(Mandatory = $false)]
+ [string]$Doormat = $null,
  [int]$maxLength = 300
 )
 
@@ -52,11 +54,30 @@ $bottom = @"
 ▔▏┗┻┛┃┃┗┻┛▕▔
 "@
 
+if($doormat){
+	Write-Verbose "We have a doormat: $doormat"
+	$houseWidth = 13
+	$doormatWidth = $doormat.Length
+	$halfMat = [int]$($doormatWidth / 2)
+	if($doormatWidth -ge $houseWidth){
+		Write-Verbose "No spacing, as `$doormatWidth ($doormatWidth) -ge `$houseWidth ($houseWidth)"
+	} else {
+		$doormat = "$(' ' * ([int]$($houseWidth /2) - $halfMat))$doormat"
+	}
+}
+
 $meme = @"
 $top
 $message
 $bottom
 "@
+
+if($doormat){
+	$meme = @"
+$meme
+$doormat
+"@
+}
 
 if($meme.Length -le $maxLength){
 	$meme
