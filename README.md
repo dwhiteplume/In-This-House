@@ -17,6 +17,7 @@ Each version frames a custom message between two stylized ASCII banners and ensu
 ## 🛠 Features
 
 - Customizable message (default: `"MESSAGE"`)
+- Optional 'doormat' message
 - Configurable character limit (default: `300`)
 - Stylish ASCII framing
 - Command-line and browser support
@@ -28,6 +29,7 @@ Each version frames a custom message between two stylized ASCII banners and ensu
 
 ```
 .\GetInThisHouse.ps1 -message "Stef Dolson’s screens are law"
+.\GetInThisHouse.ps1 -message "miss rep Kiki, Kira, Citron, Sug" -Doormat "#Mystics"
 .\GetInThisHouse.ps1 -message "Respect perimeter defense" -maxLength 500
 ```
 
@@ -69,6 +71,7 @@ Just type your message, set the length limit, and hit **Generate**. The meme wil
 Respect Brittney Sykes' perimeter defense
 ╱╱┏┳┓╭╮┏┳┓ ╲╲
 ▔▏┗┻┛┃┃┗┻┛▕▔
+  #Mystics
 ```
 
 ## 🚨 Length Check
