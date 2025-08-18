@@ -7,14 +7,12 @@ use Getopt::Long;
 my $message   = 'Your message';
 my $doormat   = '';
 my $maxLength = 300;
-my $trim      = 0;  # New option: off by default
 
 # Parse command-line options
 GetOptions(
     'message=s'   => \$message,
     'doormat=s'   => \$doormat,
     'maxLength=i' => \$maxLength,
-    'trim!'       => \$trim,  # --trim or --notrim
 ) or die "Error in command line arguments\n";
 
 # ASCII frames
@@ -32,12 +30,10 @@ my $bottom = <<'BOTTOM';
 ▔▏┗┻┛┃┃┗┻┛▕▔
 BOTTOM
 
-# Optional trimming
-if ($trim) {
-    chomp($top);
-    chomp($message);
-    chomp($bottom);
-}
+# Always trim trailing newlines
+chomp($top);
+chomp($message);
+chomp($bottom);
 
 # Handle doormat centering
 if ($doormat ne '') {
@@ -55,9 +51,3 @@ if ($doormat ne '') {
 my $meme = "$top\n$message\n$bottom";
 $meme .= "\n$doormat" if $doormat ne '';
 
-# Validate length
-if (length($meme) <= $maxLength) {
-    print "$meme";
-} else {
-    die length($meme) . " -gt $maxLength\n";
-}
