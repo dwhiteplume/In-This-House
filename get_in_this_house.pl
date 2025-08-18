@@ -48,7 +48,7 @@ $meme .= "\n$doormat" if $doormat ne '';
 
 # Validate length
 if (length($meme) <= $maxLength) {
-    print "$meme\n";
+    print "$meme";
 } else {
     die length($meme) . " -gt $maxLength\n";
 }
