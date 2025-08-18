@@ -9,8 +9,12 @@ This script creates a playful meme with a top and bottom ASCII art frame that su
 It checks the total character length to ensure the output remains within a specified limit (default is 300 characters).
 If the meme exceeds this limit, an error is thrown to help the user adjust the input accordingly.
 
-.PARAMETER message
+.PARAMETER Message
 Specifies the message to display between the ASCII frames. The default message is "MESSAGE".
+
+.PARAMETER Doormat
+When specified, the text will be centered beneath the house—unless the text length exceeds the width of the house, in 
+which case it will not be centered.
 
 .PARAMETER maxLength
 Sets the maximum character count for the final meme output, including frames and message.
